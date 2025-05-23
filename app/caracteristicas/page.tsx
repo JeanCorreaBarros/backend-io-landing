@@ -44,7 +44,14 @@ export default function CaracteristicasPage() {
       <NavigationBar />
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-16 md:py-24 text-center">
+      <section className="container mx-auto px-4 py-16 md:py-24 text-center relative">
+        <div className="absolute left-0 top-0 pt-4 pl-4">
+          <Link href="/">
+            <Button variant="ghost" className="text-gray-300 hover:text-purple-500">
+              <ArrowLeft className="h-4 w-4 mr-2" /> Volver al inicio
+            </Button>
+          </Link>
+        </div>
         <motion.div
           initial="hidden"
           animate="visible"
@@ -62,14 +69,6 @@ export default function CaracteristicasPage() {
             Descubre todas las herramientas y funcionalidades que hacen de backend.io la plataforma ideal para crear
             backends de manera visual y eficiente.
           </motion.p>
-
-          <motion.div variants={fadeIn} className="pt-4">
-            <Link href="/">
-              <Button variant="ghost" className="text-gray-300 hover:text-white">
-                <ArrowLeft className="h-4 w-4 mr-2" /> Volver al inicio
-              </Button>
-            </Link>
-          </motion.div>
         </motion.div>
       </section>
 
@@ -86,17 +85,18 @@ export default function CaracteristicasPage() {
             <div className="inline-block px-3 py-1 rounded-full bg-[#1a1f3d] text-purple-400 text-xs font-medium">
               Modelado Visual
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white">Diseña tu base de datos sin escribir código</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white">Crea tu Proyecto Backend en minutos</h2>
             <p className="text-gray-300">
-              Nuestra interfaz de arrastrar y soltar te permite diseñar modelos de datos complejos, establecer
-              relaciones y definir restricciones de manera visual e intuitiva.
+              Nuestra interfaz de arrastrar y soltar te permite crear proyectos Backend completos en minutos: selecciona
+              el lenguaje, el tipo de base de datos y añade características como CRUD básico o autenticación. Deja listas
+              las conexiones y rutas para que solo tengas que exportar y empezar a trabajar.
             </p>
             <ul className="space-y-3">
               {[
-                "Crea tablas y modelos con unos pocos clics",
-                "Establece relaciones entre entidades visualmente",
-                "Define tipos de datos, índices y restricciones",
-                "Genera automáticamente migraciones",
+                "Crea proyectos Backend en pocos clics",
+                "Selecciona el lenguaje y la base de datos que prefieras",
+                "Añade características como CRUD o autenticación fácilmente",
+                "Las conexiones y rutas quedan listas para exportar tu proyecto",
               ].map((item, index) => (
                 <li key={index} className="flex items-start gap-2">
                   <div className="h-5 w-5 rounded-full bg-purple-500/20 flex items-center justify-center mt-0.5">
@@ -131,9 +131,11 @@ export default function CaracteristicasPage() {
         className="container mx-auto px-4 py-16"
       >
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Todas las herramientas que necesitas</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Todo lo que tu proyecto Backend necesita</h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            backend.io ofrece un conjunto completo de funcionalidades para crear backends robustos y escalables
+            Backend.io te permite crear proyectos Backend listos para producción en minutos: elige el lenguaje, la base de
+            datos y agrega funcionalidades como CRUD, autenticación, despliegue y más. Todo lo que necesitas para lanzar,
+            escalar y mantener tu Backend de forma visual, rápida y sin complicaciones.
           </p>
         </div>
 
@@ -141,43 +143,43 @@ export default function CaracteristicasPage() {
           {[
             {
               icon: <Database className="h-8 w-8 text-purple-400" />,
-              title: "Modelado de Datos",
-              description: "Diseña tu estructura de datos con una interfaz visual intuitiva",
+              title: "Configuración de Proyecto",
+              description: "Elige el lenguaje, la base de datos y las tecnologías principales para tu Backend en minutos.",
             },
             {
               icon: <Code className="h-8 w-8 text-purple-400" />,
-              title: "API Builder",
-              description: "Genera endpoints RESTful y GraphQL automáticamente",
+              title: "Generador de Código Backend",
+              description: "Crea la estructura, rutas y lógica base de tu proyecto Backend automáticamente.",
             },
             {
               icon: <Sparkles className="h-8 w-8 text-purple-400" />,
               title: "Asistente IA",
-              description: "Recibe sugerencias inteligentes para optimizar tu backend",
+              description: "Recibe recomendaciones inteligentes para configurar y mejorar tu proyecto Backend.",
             },
             {
               icon: <Lock className="h-8 w-8 text-purple-400" />,
-              title: "Autenticación y Autorización",
-              description: "Implementa sistemas de seguridad con unos pocos clics",
+              title: "Autenticación y Seguridad",
+              description: "Agrega sistemas de autenticación y autorización listos para usar en tu Backend.",
             },
             {
               icon: <Zap className="h-8 w-8 text-purple-400" />,
-              title: "Rendimiento Optimizado",
-              description: "Backends rápidos y eficientes con optimizaciones automáticas",
+              title: "Funcionalidades CRUD y más",
+              description: "Incluye módulos como CRUD básico, relaciones y otras utilidades esenciales desde el inicio.",
             },
             {
               icon: <Server className="h-8 w-8 text-purple-400" />,
-              title: "Despliegue Automatizado",
-              description: "Publica tu backend en la nube con un solo clic",
+              title: "Despliegue Simplificado",
+              description: "Prepara tu Backend para exportar y desplegar en tu entorno favorito con un solo clic.",
             },
             {
               icon: <BarChart3 className="h-8 w-8 text-purple-400" />,
-              title: "Análisis y Monitoreo",
-              description: "Visualiza el rendimiento y uso de tu backend en tiempo real",
+              title: "Documentación y Rutas",
+              description: "Genera documentación y rutas claras para tu API y conexiones automáticamente.",
             },
             {
               icon: <Globe className="h-8 w-8 text-purple-400" />,
-              title: "Escalabilidad Global",
-              description: "Escala automáticamente según la demanda en cualquier región",
+              title: "Escalabilidad y Flexibilidad",
+              description: "Adapta tu proyecto Backend a cualquier tamaño y necesidad, listo para crecer contigo.",
             },
           ].map((feature, index) => (
             <motion.div
@@ -212,13 +214,13 @@ export default function CaracteristicasPage() {
               desarrollo.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-purple-600 hover:bg-purple-700 text-white h-12 px-6 rounded-md text-base">
+              <Button className="bg-purple-600 hover:bg-purple-500 text-white h-12 px-6 rounded-md text-base">
                 Comenzar gratis
               </Button>
               <Link href="/precios">
                 <Button
                   variant="outline"
-                  className="border-gray-700 text-white hover:bg-gray-800 h-12 px-6 rounded-md text-base"
+                  className="border-gray-700 text-purple-500 hover:bg-purple-500 hover:text-white h-12 px-6 rounded-md text-base"
                 >
                   Ver planes y precios
                 </Button>

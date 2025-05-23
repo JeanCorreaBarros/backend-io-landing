@@ -5,6 +5,7 @@ import { ChevronRight, Code, Database, Sparkles } from "lucide-react"
 import { motion } from "framer-motion"
 import { NavigationBar } from "@/components/navigation-bar"
 import { FooterWithModals } from "@/components/footer-with-modals"
+import React, { useState } from "react"
 
 // Variantes de animación
 const fadeIn = {
@@ -36,22 +37,34 @@ const scaleUp = {
 }
 
 export default function LandingPage() {
+  const [showAnnouncement, setShowAnnouncement] = useState(true)
+
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-[#050814] to-[#0a0f29]">
       {/* Announcement bar */}
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="w-full bg-[#111530]/80 backdrop-blur-sm py-2 px-4 text-center text-sm text-gray-300"
-      >
-        <p>
-          Estamos en beta cerrada 🚀{" "}
-          <Link href="#" className="text-white hover:text-purple-300 font-medium underline underline-offset-2">
-            Solicita una invitación
-          </Link>
-        </p>
-      </motion.div>
+      {showAnnouncement && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="w-full bg-[#111530]/80 backdrop-blur-sm py-2 px-4 text-center text-sm text-gray-300 relative"
+        >
+          <button
+            aria-label="Cerrar anuncio"
+            onClick={() => setShowAnnouncement(false)}
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white text-lg focus:outline-none"
+            style={{ lineHeight: 1 }}
+          >
+            ×
+          </button>
+          <p>
+            Estamos en beta cerrada 🚀{" "}
+            <Link href="#" className="text-white hover:text-purple-300 font-medium underline underline-offset-2">
+              Solicita una invitación
+            </Link>
+          </p>
+        </motion.div>
+      )}
 
       {/* Navigation */}
       <NavigationBar />
@@ -84,13 +97,13 @@ export default function LandingPage() {
               variants={fadeIn}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight"
             >
-              El nuevo
+              Genera tu Backend en minutos
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">
-                Backend Visual
+                Código Backend instantáneo
               </span>
               <br />
-              para tus apps
+              para tus proyectos
             </motion.h1>
 
             <motion.p variants={fadeIn} className="text-gray-300 text-base sm:text-lg max-w-xl">
@@ -99,8 +112,10 @@ export default function LandingPage() {
             </motion.p>
 
             <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button className="bg-purple-600 hover:bg-purple-700 text-white h-12 px-8 rounded-md text-base">
-                EXPLORAR BACKEND.IO
+              <Button asChild className="bg-purple-600 hover:bg-purple-700 text-white h-12 px-8 rounded-md text-base">
+                <a href="https://backend-io-git-master-jeancorreabarros-projects.vercel.app/login" target="_blank" rel="noopener noreferrer">
+                  EXPLORAR BACKEND.IO
+                </a>
               </Button>
             </motion.div>
           </motion.div>
@@ -116,7 +131,7 @@ export default function LandingPage() {
         className="container mx-auto px-4 py-16 text-center"
       >
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-8">
-          Potencia tu desarrollo con <span className="text-purple-400">backend.io</span>
+          Potencia tu desarrollo con <span className="text-purple-400">Backend.io</span>
         </h2>
 
         <motion.div
@@ -129,8 +144,8 @@ export default function LandingPage() {
           {[
             {
               icon: <Database className="h-8 w-8 text-purple-400" />,
-              title: "Modelado Visual",
-              description: "Diseña tu base de datos con una interfaz intuitiva de arrastrar y soltar",
+              title: "Generador Visual de Backend",
+              description: "Crea tu proyecto backend completo con una interfaz visual e intuitiva de arrastrar y soltar",
             },
             {
               icon: <Code className="h-8 w-8 text-purple-400" />,
@@ -161,7 +176,7 @@ export default function LandingPage() {
           <Link href="/caracteristicas">
             <Button 
               variant="outline" 
-              className="border-2 border-purple-500 text-purple-200 hover:bg-purple-900/30 hover:text-white hover:border-purple-400 transition-colors shadow-md rounded-lg font-semibold px-6 py-3 text-base"
+              className="border-2 border-purple-500 text-purple-700 hover:bg-purple-900/30 hover:text-white hover:border-purple-400 transition-colors shadow-md rounded-lg font-semibold px-6 py-3 text-base"
             >
               Ver todas las características <ChevronRight className="h-4 w-4 ml-1" />
             </Button>
@@ -192,7 +207,7 @@ export default function LandingPage() {
 
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center relative z-10">
           <div className="space-y-6">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+            <h2 className="text-3xl pl-10 sm:text-4xl md:text-5xl font-bold text-white leading-tight">
               Conecta con{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">
                 Expertos
@@ -200,11 +215,11 @@ export default function LandingPage() {
               en Desarrollo Backend
               <span className="text-purple-400">.</span>
             </h2>
-            <p className="text-gray-300 text-base sm:text-lg">
-              Accede a una comunidad de desarrolladores especializados y crea backends más rápidos y eficientes con
+            <p className="text-gray-300 pl-10 text-base sm:text-lg">
+              Accede a una comunidad de desarrolladores especializados y crea Backends más rápidos y eficientes con
               asistencia en tiempo real.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row pl-10 gap-4">
               <Button className="bg-purple-600 hover:bg-purple-700 text-white h-12 px-6 rounded-md text-base">
                 Iniciar Proyecto
               </Button>
@@ -233,25 +248,58 @@ export default function LandingPage() {
                 <div className="text-xs sm:text-sm text-purple-400">Desarrolladores</div>
               </div>
 
-              {/* Avatar positions */}
+              {/* Burbujas flotantes de lenguajes backend */}
               {[
-                { top: "10%", left: "50%", delay: 0.1 },
-                { top: "30%", left: "85%", delay: 0.2 },
-                { top: "70%", left: "85%", delay: 0.3 },
-                { top: "90%", left: "50%", delay: 0.4 },
-                { top: "70%", left: "15%", delay: 0.5 },
-                { top: "30%", left: "15%", delay: 0.6 },
+                { top: "10%", left: "50%", delay: 0.1, icon: (
+                  // Node.js
+                  <svg viewBox="0 0 32 32" width="28" height="28" fill="none"><circle cx="16" cy="16" r="16" fill="#303030"/><path d="M16 7l7.5 4.3v8.6L16 25l-7.5-4.3V11.3L16 7z" fill="#8cc84b"/><text x="16" y="21" textAnchor="middle" fontSize="8" fill="#fff" fontFamily="Arial">Node</text></svg>
+                ) },
+                { top: "30%", left: "85%", delay: 0.2, icon: (
+                  // Python
+                  <svg viewBox="0 0 32 32" width="28" height="28" fill="none"><circle cx="16" cy="16" r="16" fill="#306998"/><path d="M16 8c-2.2 0-4 1.8-4 4v2h8v-2c0-2.2-1.8-4-4-4z" fill="#ffd43b"/><path d="M16 24c2.2 0 4-1.8 4-4v-2h-8v2c0 2.2 1.8 4 4 4z" fill="#ffe873"/><text x="16" y="21" textAnchor="middle" fontSize="8" fill="#306998" fontFamily="Arial">Py</text></svg>
+                ) },
+                { top: "70%", left: "85%", delay: 0.3, icon: (
+                  // Java
+                  <svg viewBox="0 0 32 32" width="28" height="28" fill="none"><circle cx="16" cy="16" r="16" fill="#f89820"/><text x="16" y="21" textAnchor="middle" fontSize="10" fill="#fff" fontFamily="Arial">Java</text></svg>
+                ) },
+                { top: "90%", left: "50%", delay: 0.4, icon: (
+                  // Go
+                  <svg viewBox="0 0 32 32" width="28" height="28" fill="none"><circle cx="16" cy="16" r="16" fill="#00add8"/><text x="16" y="21" textAnchor="middle" fontSize="10" fill="#fff" fontFamily="Arial">Go</text></svg>
+                ) },
+                { top: "70%", left: "15%", delay: 0.5, icon: (
+                  // Ruby
+                  <svg viewBox="0 0 32 32" width="28" height="28" fill="none"><circle cx="16" cy="16" r="16" fill="#cc342d"/><text x="16" y="21" textAnchor="middle" fontSize="10" fill="#fff" fontFamily="Arial">Ruby</text></svg>
+                ) },
+                { top: "30%", left: "15%", delay: 0.6, icon: (
+                  // PHP
+                  <svg viewBox="0 0 32 32" width="28" height="28" fill="none"><circle cx="16" cy="16" r="16" fill="#777bb4"/><text x="16" y="21" textAnchor="middle" fontSize="10" fill="#fff" fontFamily="Arial">PHP</text></svg>
+                ) },
               ].map((pos, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: pos.delay }}
-                  className="absolute w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-purple-500 to-blue-600 p-0.5"
-                  style={{ top: pos.top, left: pos.left, transform: "translate(-50%, -50%)" }}
+                  initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
+                  whileInView={{
+                    opacity: 1,
+                    scale: 1,
+                    x: [0, (parseFloat(pos.left) - 50) * 3],
+                    y: [0, (parseFloat(pos.top) - 50) * 3],
+                    boxShadow: [
+                      "0 0 0px #a78bfa55",
+                      "0 0 24px #a78bfa99"
+                    ],
+                  }}
+                  transition={{
+                    duration: 1.2,
+                    delay: pos.delay,
+                    type: "spring",
+                    stiffness: 80,
+                    damping: 12,
+                  }}
+                  className="absolute w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-purple-500 to-blue-600 p-1 z-10 flex items-center justify-center shadow-lg"
+                  style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
                 >
                   <div className="w-full h-full rounded-full bg-[#0c1131] flex items-center justify-center">
-                    <div className="text-sm sm:text-lg font-bold text-purple-400">{index + 1}</div>
+                    {pos.icon}
                   </div>
                 </motion.div>
               ))}
@@ -463,7 +511,7 @@ export default function LandingPage() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={fadeIn}
-        className="container mx-auto px-4 py-16 md:py-24"
+        className="container hidden mx-auto px-4 py-16 md:py-24"
       >
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Planes Disponibles</h2>
@@ -623,7 +671,7 @@ export default function LandingPage() {
               </Button>
               <Button
                 variant="outline"
-                className="border-gray-700 text-white hover:bg-gray-800 h-12 px-6 rounded-md text-base"
+                className="border-gray-700 text-purple-500 hover:bg-gray-800 hover:text-purple-500 h-12 px-6 rounded-md text-base"
               >
                 Ver documentación
               </Button>

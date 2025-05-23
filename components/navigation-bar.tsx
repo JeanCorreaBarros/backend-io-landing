@@ -20,7 +20,7 @@ export function NavigationBar() {
         <div className="h-8 w-8 rounded-md bg-gradient-to-br from-purple-500 to-blue-600 flex items-center justify-center">
           <Database className="h-4 w-4 text-white" />
         </div>
-        <span className="text-white font-bold text-xl">backend.io</span>
+        <span className="text-white font-bold text-xl">Backend.io</span>
       </Link>
       <nav className="hidden md:flex items-center gap-8">
         <Link
@@ -43,7 +43,7 @@ export function NavigationBar() {
         >
           Características
         </Link>
-        <Link
+        {/* <Link
           href="/precios"
           className={
             pathname === "/precios"
@@ -52,7 +52,7 @@ export function NavigationBar() {
           }
         >
           Precios
-        </Link>
+        </Link> */}
         <Link
           href="/documentacion"
           className={
@@ -94,7 +94,11 @@ export function NavigationBar() {
         </Button>
       </div>
       <div className="hidden md:block">
-        <Button className="bg-purple-600 hover:bg-purple-700 text-white rounded-md">Prueba gratis</Button>
+        <Button asChild className="bg-purple-600 hover:bg-purple-700 text-white rounded-md">
+          <a href="https://backend-io-git-master-jeancorreabarros-projects.vercel.app/login" target="_blank" rel="noopener noreferrer">
+            Prueba gratis
+          </a>
+        </Button>
       </div>
     </motion.header>
   )

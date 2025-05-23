@@ -19,10 +19,10 @@ export function FooterWithModals() {
               <div className="h-8 w-8 rounded-md bg-gradient-to-br from-purple-500 to-blue-600 flex items-center justify-center">
                 <Database className="h-4 w-4 text-white" />
               </div>
-              <span className="text-white font-bold">backend.io</span>
+              <span className="text-white font-bold">Backend.io</span>
             </div>
             <div className="text-sm text-gray-400">
-              © {new Date().getFullYear()} backend.io. Todos los derechos reservados.
+              © {new Date().getFullYear()} Backend.io. Todos los derechos reservados. (Jean Correa)
             </div>
             <div className="flex gap-6">
               <button onClick={() => setTermsOpen(true)} className="text-gray-400 hover:text-white text-sm">

@@ -167,7 +167,14 @@ export default function EquipoPage() {
       <NavigationBar />
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-16 md:py-24 text-center">
+      <section className="container mx-auto px-4 py-16 md:py-24 text-center relative">
+        <motion.div className="absolute left-0 top-0 pt-2 pl-2">
+          <Link href="/">
+            <Button variant="ghost" className="text-gray-300 hover:text-white">
+              <ArrowLeft className="h-4 w-4 mr-2" /> Volver al inicio
+            </Button>
+          </Link>
+        </motion.div>
         <motion.div
           initial="hidden"
           animate="visible"
@@ -180,17 +187,30 @@ export default function EquipoPage() {
             detrás de backend.io
           </motion.h1>
 
+         
+
           <motion.p variants={fadeIn} className="text-gray-300 text-lg max-w-2xl mx-auto">
             Un grupo de apasionados desarrolladores, diseñadores y expertos en IA trabajando juntos para revolucionar la
             forma en que se crean backends.
           </motion.p>
 
-          <motion.div variants={fadeIn} className="pt-4">
-            <Link href="/">
-              <Button variant="ghost" className="text-gray-300 hover:text-white">
-                <ArrowLeft className="h-4 w-4 mr-2" /> Volver al inicio
-              </Button>
-            </Link>
+           <motion.div variants={fadeIn} className="flex justify-center mt-4 gap-4">
+            <Button
+              asChild
+              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md text-base"
+            >
+              <a href="#" target="_blank" rel="noopener noreferrer">
+                Donar al proyecto
+              </a>
+            </Button>
+            <Button
+              asChild
+              className="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md text-base"
+            >
+              <a href="#" target="_blank" rel="noopener noreferrer">
+                Haz parte del equipo
+              </a>
+            </Button>
           </motion.div>
         </motion.div>
       </section>
@@ -204,36 +224,59 @@ export default function EquipoPage() {
         className="container mx-auto px-4 py-8 md:py-16"
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {teamMembers.map((member, index) => (
-            <motion.div
-              key={index}
-              variants={scaleUp}
-              className="bg-[#0c1131] rounded-xl border border-gray-800 overflow-hidden hover:border-purple-500/30 transition-all hover:shadow-lg hover:shadow-purple-500/10"
-            >
-              <div className="h-48 bg-gradient-to-br from-purple-900/40 to-blue-900/40 relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-purple-500 to-blue-600 p-0.5">
-                    <div className="w-full h-full rounded-full bg-[#0c1131] flex items-center justify-center text-white text-2xl font-bold">
-                      {member.name.charAt(0)}
-                    </div>
+          {/* Card CEO Jean Carlos Correa */}
+          <motion.div
+            variants={scaleUp}
+            className="bg-[#0c1131] rounded-xl border border-gray-800 overflow-hidden hover:border-purple-500/30 transition-all hover:shadow-lg hover:shadow-purple-500/10"
+          >
+            <div className="h-48 bg-gradient-to-br from-purple-900/40 to-blue-900/40 relative">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-purple-500 to-blue-600 p-0.5">
+                  <div className="w-full h-full rounded-full bg-[#0c1131] flex items-center justify-center text-white text-2xl font-bold">
+                    JC
                   </div>
                 </div>
               </div>
+            </div>
+            <div className="p-6 text-center">
+              <h3 className="text-xl font-bold text-white mb-1">Jean Carlos Correa</h3>
+              <p className="text-purple-400 text-sm mb-2">CEO y Fundador</p>
+              <p className="text-gray-400 text-xs mb-4">Barranquilla, Colombia</p>
+              <p className="text-gray-300 text-sm mb-4">Más de 6 años de experiencia en Frontend y Backend</p>
+              <div className="flex justify-center gap-4">
+                <a href="#" className="text-gray-400 hover:text-purple-400">
+                  <Twitter className="h-5 w-5" />
+                </a>
+                <a href="#" className="text-gray-400 hover:text-purple-400">
+                  <Linkedin className="h-5 w-5" />
+                </a>
+                <a href="#" className="text-gray-400 hover:text-purple-400">
+                  <Github className="h-5 w-5" />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+          {/* Skeleton cards for futuros miembros */}
+          {[...Array(3)].map((_, i) => (
+            <motion.div
+              key={i}
+              variants={scaleUp}
+              className="bg-[#0c1131] rounded-xl border border-gray-800 overflow-hidden animate-pulse"
+            >
+              <div className="h-48 bg-gradient-to-br from-purple-900/40 to-blue-900/40 relative">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-24 h-24 rounded-full bg-gray-700" />
+                </div>
+              </div>
               <div className="p-6 text-center">
-                <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
-                <p className="text-purple-400 text-sm mb-2">{member.role}</p>
-                <p className="text-gray-400 text-xs mb-4">{member.location}</p>
-                <p className="text-gray-300 text-sm mb-4">{member.bio}</p>
-                <div className="flex justify-center gap-4">
-                  <a href={member.social.twitter} className="text-gray-400 hover:text-purple-400">
-                    <Twitter className="h-5 w-5" />
-                  </a>
-                  <a href={member.social.linkedin} className="text-gray-400 hover:text-purple-400">
-                    <Linkedin className="h-5 w-5" />
-                  </a>
-                  <a href={member.social.github} className="text-gray-400 hover:text-purple-400">
-                    <Github className="h-5 w-5" />
-                  </a>
+                <div className="h-6 w-24 bg-gray-700 rounded mb-2 mx-auto" />
+                <div className="h-4 w-16 bg-gray-800 rounded mb-2 mx-auto" />
+                <div className="h-3 w-20 bg-gray-800 rounded mb-2 mx-auto" />
+                <div className="h-3 w-28 bg-gray-900 rounded mx-auto" />
+                <div className="flex justify-center gap-4 mt-4">
+                  <div className="h-5 w-5 bg-gray-800 rounded-full" />
+                  <div className="h-5 w-5 bg-gray-800 rounded-full" />
+                  <div className="h-5 w-5 bg-gray-800 rounded-full" />
                 </div>
               </div>
             </motion.div>
@@ -259,13 +302,13 @@ export default function EquipoPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="bg-purple-600 hover:bg-purple-700 text-white h-12 px-6 rounded-md text-base">
-                Ver ofertas de trabajo
+                Realizar una donación
               </Button>
               <Button
                 variant="outline"
-                className="border-gray-700 text-white hover:bg-gray-800 h-12 px-6 rounded-md text-base"
+                className="border-gray-700 text-purple-500 hover:bg-gray-800 hover:text-white h-12 px-6 rounded-md text-base"
               >
-                Contactar con RRHH
+                Haz parte del equipo
               </Button>
             </div>
           </div>

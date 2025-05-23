@@ -86,7 +86,7 @@ export default function PreciosPage() {
         variants={staggerContainer}
         className="container mx-auto px-4 py-8 md:py-16"
       >
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid  md:grid-cols-3 gap-8">
           {/* Free Plan */}
           <motion.div
             variants={scaleUp}
@@ -117,7 +117,7 @@ export default function PreciosPage() {
           {/* Pro Plan */}
           <motion.div
             variants={scaleUp}
-            className="bg-gradient-to-b from-[#1a103a] to-[#0c1131] rounded-xl border border-purple-500/30 overflow-hidden relative"
+            className="bg-gradient-to-b from-[#1a103a] to-[#0c1131] rounded-xl border border-purple-500/30 overflow-hidden relative opacity-50 pointer-events-none select-none"
           >
             <div className="p-6 border-b border-gray-800">
               <h3 className="text-xl font-bold text-white mb-2">Plan Pro</h3>
@@ -142,8 +142,13 @@ export default function PreciosPage() {
                   </li>
                 ))}
               </ul>
-              <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white mt-6">
-                Comenzar prueba gratuita
+              <Button
+                asChild
+                className="w-full bg-purple-600 hover:bg-purple-700 text-white mt-6"
+              >
+                <a href="https://backend-io-git-master-jeancorreabarros-projects.vercel.app/login" target="_blank" rel="noopener noreferrer">
+                  Comenzar prueba gratuita
+                </a>
               </Button>
             </div>
           </motion.div>
@@ -151,7 +156,7 @@ export default function PreciosPage() {
           {/* Enterprise Plan */}
           <motion.div
             variants={scaleUp}
-            className="bg-gradient-to-b from-[#1a103a] to-[#0c1131] rounded-xl border border-gray-800 overflow-hidden"
+            className="bg-gradient-to-b from-[#1a103a] to-[#0c1131] rounded-xl border border-gray-800 overflow-hidden relative opacity-50 pointer-events-none select-none"
           >
             <div className="p-6 border-b border-gray-800">
               <h3 className="text-xl font-bold text-white mb-2">Plan Enterprise</h3>
